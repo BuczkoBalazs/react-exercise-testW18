@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 function Subscription() {
 
@@ -12,17 +12,21 @@ function Subscription() {
         {sent ? (succesSub === true) ? <div>Subscribed</div> : <></> :
             <>
             <input type="text" onChange={(e) => setInput(e.target.value)} />
-            <button disabled={ (input.includes('@' && '.') ? false : true)} onClick={ () => { 
-                fetch('https://demoapi.com/api/series/newsletter', {
+            <button disabled={ (input.includes('@' && '.') ? false : true)} onClick={ async () => { 
+                const response = await fetch('https://demoapi.com/api/series/newsletter', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: {
                         "e-mail": {input}
                     }
                 })
-                .then(res => res.json());
-                setSent(true)
-                setTimeout(() => setSuccesSub(false), 5000)
+                // response()
+                if(response.ok) {
+                    setSent(true)
+                    setTimeout(() => setSuccesSub(false), 5000)
+                } else {
+                    console.log("post method went wrong")
+                }
             }}>Subscribe!</button>
             </>
         }
