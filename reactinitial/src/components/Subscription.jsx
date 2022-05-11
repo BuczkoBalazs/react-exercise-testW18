@@ -7,9 +7,8 @@ function Subscription() {
     const [succesSub, setSuccesSub] = useState(true)
 
     return (
-        <div>
-            <title>Subscribe to our newsletter</title>
-        {sent ? (succesSub === true) ? <div>Subscribed</div> : <></> :
+        <>
+        {sent ? (succesSub === true) ? <div>Subscribed</div> : null :
             <>
             <input type="text" onChange={(e) => setInput(e.target.value)} />
             <button disabled={ (input.includes('@' && '.') ? false : true)} onClick={ async () => { 
@@ -20,7 +19,6 @@ function Subscription() {
                         "e-mail": {input}
                     }
                 })
-                // response()
                 if(response.ok) {
                     setSent(true)
                     setTimeout(() => setSuccesSub(false), 5000)
@@ -30,7 +28,7 @@ function Subscription() {
             }}>Subscribe!</button>
             </>
         }
-           </div>
+        </>
     )
 }
 

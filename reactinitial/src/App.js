@@ -32,7 +32,7 @@ const App = () => {
           {characters.map( ({name, details, index}) =>  <Character key={index} name={name} details={details} /> )}
         </>
       }
-      {subscription ? <Subscription /> : null}
+      {subscription ? <Subscription title='Subscribe to our newsletter' /> : null}
     </div>
   )
 }
