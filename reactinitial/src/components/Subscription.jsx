@@ -11,7 +11,7 @@ function Subscription() {
         {sent ? (succesSub === true) ? <div>Subscribed</div> : null :
             <>
             <input type="text" onChange={(e) => setInput(e.target.value)} />
-            <button disabled={ (input.includes('@' && '.') ? false : true)} onClick={ async () => { 
+            <button disabled={ (input.includes('@') && input.includes('.') ? false : true)} onClick={ async () => { 
                 const response = await fetch('https://demoapi.com/api/series/newsletter', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
