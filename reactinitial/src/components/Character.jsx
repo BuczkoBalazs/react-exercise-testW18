@@ -9,10 +9,10 @@ function Character({name, details}) {
     <div>
         <h2>{name}</h2>
         {showMore &&
-            <>
-                <h3>{details}</h3>
-            </>
-            }
+        <>
+            <h3>{details}</h3>
+        </>
+        }
         <button onClick={ ()=> {setShowMore(!showMore)} }>{showMore ? "Show less" : "show more"}</button>
     </div>
     )
